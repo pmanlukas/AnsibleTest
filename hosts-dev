@@ -1,0 +1,11 @@
+# hosts-dev
+
+[webservers]
+3.209.148.126
+54.160.135.18
+
+[loadbalancers]
+54.144.40.48
+
+[local]
+control
