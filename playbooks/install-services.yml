@@ -6,6 +6,8 @@
     tasks:
       - name: Installing apache
         yum: name=httpd state=present
+      - name: Ensure apache launch
+        service: name=httpd state=started enabled=yes
 
   - hosts: webservers
     become: true
@@ -16,3 +18,5 @@
             - httpd 
             - php
           state: present
+      - name: Ensure apache launch
+        service: name=httpd state=started enabled=yes
