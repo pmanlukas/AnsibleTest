@@ -6,7 +6,7 @@
     
     vars:
       path_to_app: "/var/www/html"
-      
+
     tasks:
       - name: Upload application to server
         copy:
@@ -18,6 +18,14 @@
         copy:
           dest: "{{ path_to_app }}/info.php"
           content: "<h1> Info about our webserver {{ ansible_hostname }} </h1>"
+
+      - name: See directory contents
+        command: ls -la {{ path_to_app }}
+        register: dir_contents
+
+      - name: debug directory contents
+        debug:
+          msg: "{{ dir_contents }}"
 
       - name: Configure php.ini file
         lineinfile: 
